@@ -1,9 +1,9 @@
 import { FC} from "react"
 
-const TopLevel:FC = ():JSX.Element => {
+const TopLevel:FC<{list:Spells[]}> = ({list}):JSX.Element => {
     return(
         <div>
-            taskName
+            
         </div>
     )
 }
