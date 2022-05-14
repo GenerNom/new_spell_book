@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import Spell from '../Spell'
 
-const ListManager: FC<{spellList: Array<Spell>}> = ({spellList}) => {
+const ListManager: FC<{allSpells: Array<Spell>}> = ({allSpells}) => {
     return (
         <div id="ListManager">
-            {spellList[0].name}
+            {allSpells[0].name}
         </div>
     )
 }
