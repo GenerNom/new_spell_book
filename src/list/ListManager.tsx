@@ -1,23 +1,25 @@
 import { FC } from 'react'
 import Spell from '../Spell'
 
-const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
+export const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
     return (
         <li className='displaySpell'>
-            <div className='spellName'>{spell.name}</div>
+            <div className='header'>
+                <h3 className='spellName'>{spell.name}</h3> <h5 className='spellLevel'>Level:{spell.level}</h5>
+            </div>    
         </li>
     )
 }
 
-const ListManager: FC<{allSpells: Array<Spell>}> = ({allSpells}) => {
+export const ListManager: FC<{allSpells: Array<Spell>}> = ({allSpells}) => {
     
     return (
         <div id="ListManager">
-            <ul>{allSpells.map((spell): JSX.Element => {
-                return <SpellFormatting spell={spell} />
-            })}</ul>
+            <ul>
+                {allSpells.map((spell): JSX.Element => {
+                    return <SpellFormatting spell={spell} />
+                })}
+            </ul>
         </div>
     )
 }
-
-export default ListManager

@@ -2,7 +2,7 @@ import { FC } from "react"
 import TopLevel from "./TopLevel"
 import Spell from "../Spell"
 import getSpellList from "../spellListService"
-import ListManager from "../list/ListManager"
+import { ListManager } from "../list/ListManager"
 
 const importedSpells:Array<Spell> = getSpellList()
 console.log(importedSpells.length);
