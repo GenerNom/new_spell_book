@@ -6,7 +6,10 @@ export const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
         <li className='displaySpell'>
             <div className='header'>
                 <h3 className='spellName'>{spell.name}</h3> <h5 className='spellLevel'>Level:{spell.level}</h5>
-            </div>    
+            </div> 
+            <div>
+                Source: {spell.source}
+            </div>
         </li>
     )
 }
