@@ -3,8 +3,8 @@ import Spell from '../Spell'
 
 const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
     return (
-        <li>
-            {spell.name}
+        <li className='displaySpell'>
+            <div className='spellName'>{spell.name}</div>
         </li>
     )
 }
