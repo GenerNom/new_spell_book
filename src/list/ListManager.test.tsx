@@ -71,4 +71,11 @@ describe('test the list manager', () => {
         expect(firstDuration).toBeInTheDocument()
         expect(secondDuration).toBeInTheDocument()
     })
+    it('should display the description', () => {
+        render(<ListManager allSpells={[testSpell1, testSpell2]} />)
+        const firstDescription = screen.getByText("Description1", {exact:false})
+        const secondDescription = screen.getByText("Description2", {exact:false})
+        expect(firstDescription).toBeInTheDocument()
+        expect(secondDescription).toBeInTheDocument()
+    })
 })

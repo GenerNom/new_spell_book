@@ -12,6 +12,7 @@ export const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
                 Range: {spell.range} <br />
                 Components: {spell.components}  <br />
                 Duration: {spell.duration} <br />
+                {spell.description} <br />
                 Source: {spell.source} <br />
             </div>
         </li>
