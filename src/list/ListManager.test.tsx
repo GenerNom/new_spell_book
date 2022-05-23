@@ -50,4 +50,11 @@ describe('test the list manager', () => {
         expect(firstCastingTime).toBeInTheDocument()
         expect(secondCastingTime).toBeInTheDocument()
     })
+    it('should display the casting time', () => {
+        render(<ListManager allSpells={[testSpell1, testSpell2]} />)
+        const firstRange = screen.getByText("Range1", {exact:false})
+        const secondRange = screen.getByText("Range2", {exact:false})
+        expect(firstRange).toBeInTheDocument()
+        expect(secondRange).toBeInTheDocument()
+    })
 })
