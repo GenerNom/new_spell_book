@@ -9,8 +9,9 @@ export const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
             </div> 
             <div>
                 Casting Time: {spell.castingTime} <br />
-                Components: {spell.components}  <br />
                 Range: {spell.range} <br />
+                Components: {spell.components}  <br />
+                Duration: {spell.duration} <br />
                 Source: {spell.source} <br />
             </div>
         </li>
