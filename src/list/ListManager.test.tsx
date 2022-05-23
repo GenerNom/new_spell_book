@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { ListManager } from './ListManager'
 
-const testSpell1 = {"name": "name1","source": "source1","school": "school1", "level": "spellLevel1", "ritual":false,"castingTime": "castingTime1","range": "Range1","components": "ComponentsText1","duration": "Duration1","description":"Description1","class": [ "Class1"]}
-const testSpell2 = {"name": "name2","source": "source2","school": "school2", "level": "spellLevel2", "ritual":true,"castingTime": "castingTime2","range": "Range2","components": "ComponentsText2","duration": "Duration2","description":"Description2","class": [ "Class2", "Class3"]}
+const testSpell1 = {"name": "name1","source": "source1","school": "school1", "level": "spellLevel1", "ritual":false,"castingTime": "castingTime1","range": "Range1","components": "Components1","duration": "Duration1","description":"Description1","class": [ "Class1"]}
+const testSpell2 = {"name": "name2","source": "source2","school": "school2", "level": "spellLevel2", "ritual":true,"castingTime": "castingTime2","range": "Range2","components": "Components2","duration": "Duration2","description":"Description2","class": [ "Class2", "Class3"]}
 
 describe('test the list manager', () => {
     it('should have a test name in it', () => {
@@ -50,11 +50,18 @@ describe('test the list manager', () => {
         expect(firstCastingTime).toBeInTheDocument()
         expect(secondCastingTime).toBeInTheDocument()
     })
-    it('should display the casting time', () => {
+    it('should display the range', () => {
         render(<ListManager allSpells={[testSpell1, testSpell2]} />)
         const firstRange = screen.getByText("Range1", {exact:false})
         const secondRange = screen.getByText("Range2", {exact:false})
         expect(firstRange).toBeInTheDocument()
         expect(secondRange).toBeInTheDocument()
+    })
+    it('should display the components', () => {
+        render(<ListManager allSpells={[testSpell1, testSpell2]} />)
+        const firstComponent = screen.getByText("Components1", {exact:false})
+        const secondComponent = screen.getByText("Components2", {exact:false})
+        expect(firstComponent).toBeInTheDocument()
+        expect(secondComponent).toBeInTheDocument()
     })
 })
