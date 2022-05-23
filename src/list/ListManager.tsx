@@ -8,6 +8,7 @@ export const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
                 <h3 className='spellName'>{spell.name}</h3> <h5 className='spellLevel'>Level:{spell.level} Classes: {spell.class.join(", ")}</h5>
             </div> 
             <div>
+                Casting Time: {spell.castingTime} 
                 Source: {spell.source}
             </div>
         </li>
