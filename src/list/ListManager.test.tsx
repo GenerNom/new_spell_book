@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import exp from 'constants'
 import { ListManager } from './ListManager'
 
 const testSpell1 = {"name": "name1","source": "source1","school": "school1", "level": "spellLevel1", "ritual":false,"castingTime": "castingTime1","range": "Range1","components": "Components1","duration": "Duration1","description":"Description1","class": [ "Class1"]}
@@ -77,5 +78,10 @@ describe('test the list manager', () => {
         const secondDescription = screen.getByText("Description2", {exact:false})
         expect(firstDescription).toBeInTheDocument()
         expect(secondDescription).toBeInTheDocument()
+    })
+    it('should display the symbol for ritual spells when appropriate', () => {
+        render(<ListManager allSpells={[testSpell1, testSpell2]} />)
+        const ritualList = screen.getAllByText("(R)")
+        expect(ritualList.length).toBe(1)
     })
 })
