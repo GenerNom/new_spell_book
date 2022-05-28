@@ -6,7 +6,7 @@ body{
   background-color: #c99deb;
 }
 .show{
-  visibility: hidden;
+  display: none;
 }
 .header{
   display: flex;
