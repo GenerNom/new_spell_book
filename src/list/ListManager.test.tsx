@@ -81,7 +81,14 @@ describe('test the list manager', () => {
     })
     it('should display the symbol for ritual spells when appropriate', () => {
         render(<ListManager allSpells={[testSpell1, testSpell2]} />)
-        const ritualList = screen.getAllByText("(R)")
+        const ritualList = screen.getAllByText("(R)", {exact:false})
         expect(ritualList.length).toBe(1)
     })
+    it('should hide the body by default', () => {
+        // const {container} = 
+        render(<ListManager allSpells={[testSpell1]} />)
+        const getHiddenText =  screen.getByText("Casting Time:", {exact:false}).closest("div")
+        expect(getHiddenText).toHaveClass("show")
+    })
+    
 })
