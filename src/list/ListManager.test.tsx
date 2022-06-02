@@ -90,7 +90,7 @@ describe('test the list manager', () => {
         const getHiddenText =  screen.getByText("Casting Time:", {exact:false}).closest("div")
         expect(getHiddenText).toHaveClass("show")
     })
-    it('should show the body on first click', () => {
+    it('should show the body on first click and hide on the second', () => {
         const {container} = render(<ListManager allSpells={[testSpell1]} />)
         const getHiddenText =  screen.getByText("Casting Time:", {exact:false}).closest("div")
         expect(getHiddenText).toHaveClass("show")
