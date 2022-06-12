@@ -71,3 +71,6 @@ input[type=text] {
   margin-right: 3%;
   background-color: #d0b8e3;
 }
+select{
+  background-color: #d0b8e3;
+}

@@ -4,7 +4,7 @@ import { applyAllFilters, applyClassFilters, applyLevelFilters, applyNameFilters
 const testSpell1 = {"name": "name1","source": "source1","school": "school1", "level": "spellLevel1", "ritual":false,"castingTime": "castingTime1","range": "Range1","components": "Components1","duration": "Duration1","description":"Description1","class": [ "Class1"]}
 const testSpell2 = {"name": "name2","source": "source2","school": "school2", "level": "spellLevel2", "ritual":true,"castingTime": "castingTime2","range": "Range2","components": "Components2","duration": "Duration2","description":"Description2","class": [ "Class2", "Class3"]}
 const testSpell3 = {"name": "name2","source": "source2","school": "school2", "level": "spellLevel3", "ritual":true,"castingTime": "castingTime2","range": "Range2","components": "Components2","duration": "Duration2","description":"Description2","class": [ "Class2", "Class3"]}
-const testSpell4 = {"name": "name2","source": "source2","school": "school2", "level": "spellLevel3", "ritual":true,"castingTime": "castingTime2","range": "Range2","components": "Components2","duration": "Duration2","description":"Description2","class": [ "Class2", "Class3"]}
+const testSpell4 = {"name": "name2","source": "source2","school": "school2", "level": "spellLevel2", "ritual":true,"castingTime": "castingTime2","range": "Range2","components": "Components2","duration": "Duration2","description":"Description2","class": [ "Class4", "Class3"]}
 
 describe('test filtering', () => {
     it('should filter the spells by name', () => {
@@ -19,8 +19,6 @@ describe('test filtering', () => {
     })
     it('should filter the spells by class', () => {
         const results = applyClassFilters([testSpell1, testSpell2],testSpell1.class[0])
-        console.log(results);
-        
         expect(results.length).toBe(1)
         expect(results[0].class).toBe(testSpell1.class)
     })
