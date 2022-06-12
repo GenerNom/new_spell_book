@@ -25,12 +25,12 @@ export const SpellFormatting: FC<{spell: Spell}> = ({spell}): JSX.Element => {
     )
 }
 
-export const ListManager: FC<{allSpells: Array<Spell>}> = ({allSpells}) => {
+export const ListManager: FC<{spells: Array<Spell>}> = ({spells}) => {
     
     return (
         <div id="ListManager">
             <ul id="List">
-                {allSpells.map((spell): JSX.Element => {
+                {spells.map((spell): JSX.Element => {
                     return <SpellFormatting spell={spell} key={spell.name} />
                 })}
             </ul>

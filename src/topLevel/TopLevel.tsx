@@ -1,9 +1,9 @@
 import { FC } from "react"
 
-const TopLevel:FC<{ListManager: FC}> = ({ListManager}):JSX.Element => {
+const TopLevel:FC<{FilterManager: FC}> = ({FilterManager}):JSX.Element => {
     return(
         <div>
-            <ListManager />
+            <FilterManager />
         </div>
     )
 }
