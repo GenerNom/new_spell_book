@@ -9,28 +9,43 @@ export const applyNameFilters = (inputSpellList: Array<Spell>, toFilterFor: stri
 export const applyLevelFilters = (inputSpellList: Array<Spell>, toFilterFor: string): Array<Spell> => {
     return inputSpellList.filter(spell => spell.level.toLowerCase().includes(toFilterFor.toLowerCase()))
 }
+export const applyClassFilters = (inputSpellList: Array<Spell>, toFilterFor: string): Array<Spell> => {
+    if(toFilterFor === "") return inputSpellList
+    return inputSpellList.filter((spell) => {return spell.class.indexOf(toFilterFor) > -1 ? true : false})
+}
 
-export const applyAllFilters = (inputSpellList: Array<Spell>, nameFilter: string, levelFilter: string): Array<Spell> => {
+export const applyAllFilters = (inputSpellList: Array<Spell>, nameFilter: string, levelFilter: string, classFilter: string): Array<Spell> => {
     const applyedNameFilter = applyNameFilters(inputSpellList, nameFilter)
     const applyedLevelFilter = applyLevelFilters(applyedNameFilter, levelFilter)
-    return applyedLevelFilter
+    const applyedClassFilter = applyClassFilters(applyedLevelFilter, classFilter)
+    return applyedClassFilter
 }
 
 const SpellLevel:FC<{level: string}> = ({level}) => {
     return (<option value={level}>{level}</option>)
-} 
+}
+const SpellClass:FC<{className: string}> = ({className}) => {
+    return (<option value={className}>{className}</option>)
+}
 
 export const FilterManager:FC<{allSpells:Array<Spell>}> = ({allSpells}) => {
     const [filteredSpells, setFilteredSpells] = useState(allSpells)
     const [nameFilter, setNameFilter] = useState("")
     const [levelFilter, setLevelFilter] = useState("")
+    const [classFilter, setClassFilter] = useState("")
     const applyFilterList = () => {
-        const nameFilterApplied = applyAllFilters(allSpells, nameFilter, levelFilter)
+        const nameFilterApplied = applyAllFilters(allSpells, nameFilter, levelFilter, classFilter)
         setFilteredSpells(nameFilterApplied)
     }
     const getAllSpellLevels = (): Array<string> => {
         const allSpellLevels: Array<string> = allSpells.map(spell => spell.level)
+        allSpellLevels.unshift("")
         return [...new Set(allSpellLevels)]
+    }
+    const getAllSpellClasses = (): Array<string> => {
+        const allSpellClasses: Array<string> = allSpells.flatMap((spell) => spell.class)
+        allSpellClasses.unshift("")
+        return [...new Set(allSpellClasses)]
     }
     
     return(
@@ -40,6 +55,9 @@ export const FilterManager:FC<{allSpells:Array<Spell>}> = ({allSpells}) => {
                     Name: <input type="text" onChange={(e) => setNameFilter(e.target.value)}></input>
                     Level: <select onChange={(e) => setLevelFilter(e.target.value)}>
                         {getAllSpellLevels().map(level => <SpellLevel level={level} />)}
+                    </select>
+                    Class: <select onChange={(e) => setClassFilter(e.target.value)}>
+                        {getAllSpellClasses().map(className => <SpellClass className={className} />)}
                     </select>
                     
                 </div>
