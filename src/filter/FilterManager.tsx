@@ -14,11 +14,17 @@ export const applyClassFilters = (inputSpellList: Array<Spell>, toFilterFor: str
     return inputSpellList.filter((spell) => {return spell.class.indexOf(toFilterFor) > -1 ? true : false})
 }
 
-export const applyAllFilters = (inputSpellList: Array<Spell>, nameFilter: string, levelFilter: string, classFilter: string): Array<Spell> => {
+export const applyRitualFilters = (inputSpellList: Array<Spell>, toFilterFor: Boolean) => {
+    if(!toFilterFor) return inputSpellList
+    return inputSpellList.filter((spell) => spell.ritual)
+}
+
+export const applyAllFilters = (inputSpellList: Array<Spell>, nameFilter: string, levelFilter: string, classFilter: string, ritualFilter: Boolean): Array<Spell> => {
     const applyedNameFilter = applyNameFilters(inputSpellList, nameFilter)
     const applyedLevelFilter = applyLevelFilters(applyedNameFilter, levelFilter)
     const applyedClassFilter = applyClassFilters(applyedLevelFilter, classFilter)
-    return applyedClassFilter
+    const applyedRitualFilter = applyRitualFilters(applyedClassFilter, ritualFilter)
+    return applyedRitualFilter
 }
 
 const SpellLevel:FC<{level: string}> = ({level}) => {
@@ -33,20 +39,26 @@ export const FilterManager:FC<{allSpells:Array<Spell>}> = ({allSpells}) => {
     const [nameFilter, setNameFilter] = useState("")
     const [levelFilter, setLevelFilter] = useState("")
     const [classFilter, setClassFilter] = useState("")
+    const [ritualFilter, setRitualFilter] = useState(false)
+
     const applyFilterList = () => {
-        const nameFilterApplied = applyAllFilters(allSpells, nameFilter, levelFilter, classFilter)
+        const nameFilterApplied = applyAllFilters(allSpells, nameFilter, levelFilter, classFilter, ritualFilter)
         setFilteredSpells(nameFilterApplied)
     }
+    
     const getAllSpellLevels = (): Array<string> => {
         const allSpellLevels: Array<string> = allSpells.map(spell => spell.level)
         allSpellLevels.unshift("")
         return [...new Set(allSpellLevels)]
     }
+    
     const getAllSpellClasses = (): Array<string> => {
         const allSpellClasses: Array<string> = allSpells.flatMap((spell) => spell.class)
         allSpellClasses.unshift("")
         return [...new Set(allSpellClasses)]
     }
+
+    // const translateCheckBox
     
     return(
         <div id="filterManager">
@@ -59,6 +71,8 @@ export const FilterManager:FC<{allSpells:Array<Spell>}> = ({allSpells}) => {
                     Class: <select onChange={(e) => setClassFilter(e.target.value)}>
                         {getAllSpellClasses().map(className => <SpellClass className={className} />)}
                     </select>
+                    Only Rituals: <input type="checkbox" onChange={(e) => setRitualFilter(e.target.checked)} />
+                   
                     
                 </div>
                 <button onClick={applyFilterList}>Fliter</button>
