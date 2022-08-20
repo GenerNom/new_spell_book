@@ -1894,7 +1894,7 @@
 {
     "name":"Magic Mouth",
 "source": "Player's Handbook",
-"level":"2nd", "school":"illusion", "ritual":true,
+"level":"2nd", "school":"Illusion", "ritual":true,
 "castingTime": "1 minute",
 "range": "30 feet",
 "components": "V, S M (a small bit of honeycomb and jade dust worth at least 10 gp, which the spell consumes)",
@@ -2136,7 +2136,7 @@
 {
     "name":"Silence",
 "source": "Player's Handbook",
-"level":"2nd", "school":"illusion", "ritual":true,
+"level":"2nd", "school":"Illusion", "ritual":true,
 "castingTime": "1 action", 
 "range": "120 feet",
 "components": "V, S",
@@ -2807,7 +2807,7 @@
 {
     "name":"Phantom Steed",
 "source": "Player's Handbook",
-"level":"3rd", "school":"illusion", "ritual":true,
+"level":"3rd", "school":"Illusion", "ritual":true,
 "castingTime": "1 action", 
 "range": "30 feet",
 "components": "V, S",

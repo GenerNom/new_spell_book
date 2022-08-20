@@ -20,6 +20,7 @@ export const applyRitualFilters = (inputSpellList: Array<Spell>, toFilterFor: Bo
 }
 
 export const applySchoolFilters = (inputSpellList: Array<Spell>, schoolToShow: string) => {
+    if (schoolToShow == "") return inputSpellList
     return inputSpellList.filter((spell) => spell.school === schoolToShow)
 }
 
